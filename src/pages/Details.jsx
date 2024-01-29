@@ -8,16 +8,16 @@ import './styled/Details.css';
 const Details = () => {
   const { movieId } = useParams();
 
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState({});
 
   useEffect(() => {
     getIdMovie(movieId).then(setMovies);
   }, [movieId]);
 
-  
-  const { title, overview, vote_average, poster_path, genres, backdrop_path, runtime } = movies;
+  console.log("movies", movies)
+  const { title, overview, vote_average, poster_path, genres, backdrop_path, runtime, release_date } = movies;
 
-  const releaseDate = new Date(movies.release_date);
+  const releaseDate = new Date(release_date);
   const year = releaseDate.getFullYear();
 
   return (
@@ -33,7 +33,7 @@ const Details = () => {
             <h2 className="title-details">{title}</h2>
           </li>
           <li>
-            <p>{year}</p>
+            {/* <p>{year}</p> */}
             <p>
               {runtime} minutes / {Math.round(runtime / 60)} hours
             </p>
@@ -48,11 +48,7 @@ const Details = () => {
           </li>
         </ul>
         <img
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-              : `https://image.tmdb.org/t/p/w500/${poster_path}`
-          }
+          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           alt={title}
         />
       </div>

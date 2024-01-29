@@ -18,4 +18,3 @@ export const getListTrending = async () => await makeRequest('trending/movie/day
 
 export const getIdMovie = async (movie_id) => await makeRequest(`movie/${movie_id}?`);
 
-// /movies/get-movie-details
