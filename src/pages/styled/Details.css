@@ -1,37 +1,86 @@
 .container-details {
-    position: relative;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 20px;
-    z-index: 1;
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px;
+  z-index: 1;
 }
 
 .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-    filter: blur(4px);
-    z-index: -1;
+  filter: blur(5px);
+  z-index: -1;
 }
 
 .details-content {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.details-content img{
-    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
+.details-content img {
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+}
+
+.details-list {
+  background-color: #ffffff62;
+  padding: 8px;
+  border-radius: 12px;
+  max-width: 600px;
+
+  max-height: 380px;
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.3);
 }
 
 .title-details {
-    background-color: #ffffff62;
-    padding: 4px 40px 4px 4px;
-    -webkit-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.4);
+  padding: 4px 4px 8px 6px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 8px;
+}
+
+.item-details.one-info {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.item-details.one-info:nth-child(2) {
+  margin-bottom: 4px;
+}
+
+.item-details.three-info {
+  padding-top: 24px;
+  font-size: 18px;
+}
+
+.container-btn-last {
+  position: absolute;
+  top: 0;
+  left: -48px;
+}
+
+.container-btn-last button {
+  padding: 4px 6px;
+  cursor: pointer;
+  border: 1px solid #c2c2c2;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+.container-btn-last button:hover {
+    box-shadow: none;
 }

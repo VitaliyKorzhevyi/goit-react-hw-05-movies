@@ -2,11 +2,11 @@ import { Suspense } from 'react';
 import Header from './Header';
 import { Outlet } from 'react-router-dom';
 
-import css from "./styled/Layout.module.css"
+import "./styled/Layout.css"
 
 const Layout = () => {
   return (
-    <div className={css.container}>
+    <div className="container">
       <Header />
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />

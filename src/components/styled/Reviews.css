@@ -1,0 +1,24 @@
+.container-reviews {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.container-reviews h3 {
+  padding: 28px 0 16px;
+}
+
+.title-review {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rating-info {
+    color: white;
+    background-color: black;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.more-reviews {
+}
