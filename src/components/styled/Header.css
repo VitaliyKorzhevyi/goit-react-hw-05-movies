@@ -1,0 +1,25 @@
+.list-nav {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  max-width: 1230px;
+  margin: 0 auto;
+  padding: 12px 15px;
+}
+
+.list-nav li:nth-child(1) {
+    margin-right: 20px;
+}
+
+.logo {
+  width: 40px;
+}
+
+.nav-link {
+  padding: 8px;
+  background-color: rgb(146, 146, 146);
+}
+
+.active {
+  background-color: aqua;
+}

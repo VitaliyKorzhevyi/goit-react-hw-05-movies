@@ -1,0 +1,33 @@
+.container-list-trending {
+    position: relative;
+    width: 1230px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+.item-trending {
+    cursor: pointer;
+}
+
+.list-trending img {
+  display: none;
+  padding-right: 15px;
+}
+
+
+.item-trending:hover {
+    color: azure;
+    background-color: black;
+}
+
+.item-trending:hover img {
+  display: block;
+}
+
+
+.poster-list-trending {
+    position: absolute;
+    height: 600px;
+    top: 50px;
+    right: 0;
+}
