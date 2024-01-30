@@ -1,9 +1,12 @@
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getCastMovie, getIdMovie, getReviewsMovie } from 'services/api';
 
 import './styled/Details.css';
+import placeholderBackdrop from "../images/placeholderBackdropDetails.jpg";
+import placeholderPoster from "../images/placeholderPosterSearch.png";
+
 
 const Details = ({ onGetCast, onGetReviews}) => {
   const { movieId } = useParams();
@@ -56,7 +59,7 @@ const Details = ({ onGetCast, onGetReviews}) => {
         <div>
           <img
             className="background-image"
-            src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+            src={backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : placeholderBackdrop}
             alt={title}
           />
           <div className="details-content">
@@ -106,13 +109,20 @@ const Details = ({ onGetCast, onGetReviews}) => {
               </li>
             </ul>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : placeholderPoster}
               alt={title}
             />
           </div>
         </div>
       </div>
-      <Outlet />
+      <div className='ellipse-desktop-1'></div>
+      <div className='ellipse-desktop-2'></div>
+      <div className='ellipse-desktop-3'></div>
+      <div className='ellipse-desktop-4'></div>
+      <div className='ellipse-desktop-5'></div>
+      <Suspense>
+           <Outlet />
+      </Suspense>
     </>
   );
 };

@@ -1,45 +1,46 @@
 .container-cast {
-  /* max-width: 1240px; */
-  margin: 0 auto;
-  padding: 0 20px 160px;
-  /* background-color: rgba(65, 65, 65, 0.274); */
+  position: relative;
+  margin: 16px auto 0;
+  padding: 0 20px 80px;
+  background-color: rgba(0, 0, 0, 0.411);
+  
 }
 
 .container-cast h3 {
-    max-width: 1240px;
-    margin: 0 auto;
-  padding: 28px 0 16px;
+  text-align: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 0 20px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
 }
 
 .list-cast {
-    max-width: 1240px;
-    margin: 0 auto;
-    /* background-color: rgba(65, 65, 65, 0.274); */
+  max-width: 1240px;
+  margin: 0 auto;
   display: flex;
   gap: 16px;
-  padding: 4px 0 16px 2px;
+  padding: 4px 20px 16px 2px;
   width: 100%;
   height: 100%;
-  overflow-x: auto; /* Используйте 'scroll', если вы хотите всегда показывать полосу прокрутки */
-  /* white-space: nowrap; */
-  overflow-y: hidden; /* Отключение вертикального скролла */
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .list-cast::-webkit-scrollbar {
   height: 10px;
   max-width: 20px;
-  padding-right: 8px; /* Ширина скроллбара */
+  padding-right: 8px;
 }
 
-/* Стилизация "ползунка" скроллбара (бара) */
 .list-cast::-webkit-scrollbar-thumb {
-  background-color: #dadadadc; /* Цвет "ползунка" */
-  border-radius: 6px; /* Закругление углов "ползунка" */
+  background-color: #dadadadc;
+  border-radius: 6px;
 }
 
-/* Стилизация трека (фона) скроллбара */
 .list-cast::-webkit-scrollbar-track {
-  background-color: #f1f1f123; /* Цвет трека */
+  background-color: #f1f1f123;
 }
 
 .item-cast img {
@@ -51,19 +52,25 @@
 .item-cast {
   padding-bottom: 12px;
   border-radius: 6px;
+  background-color: #00000054;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
 }
 
 .cast-name {
-  font-size: 14px;
+  font-size: 16px;
   padding: 4px 10px 0;
+  text-align: center;
+  font-family: 'League Spartan', sans-serif;
+
 }
 
 .cast-character {
   font-size: 14px;
-  padding: 0 10px;
+  padding: 4px 10px;
+  color: #cfcfcf;
+  text-align: center;
 }
 .item-cast:hover {
-    transform: scale(1.03);
-  }
+  transform: scale(1.03);
+}

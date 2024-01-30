@@ -1,5 +1,5 @@
 import './styled/Cast.css';
-import photoInvalid from '../images/photoInvalid.jpg';
+import placeholderPhoto from '../images/placeholderPhoto.jpg';
 
 const Cast = ({ onGetCast }) => {
 
@@ -21,14 +21,14 @@ const Cast = ({ onGetCast }) => {
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                    : `${photoInvalid}`
+                    : placeholderPhoto
                 }
                 alt={name}
               />
               <p className="cast-name">
                 <strong>{name}</strong>
               </p>
-              <p className="cast-character">{character}</p>
+              <p className="cast-character">({character})</p>
             </li>
           ))}
         </ul>

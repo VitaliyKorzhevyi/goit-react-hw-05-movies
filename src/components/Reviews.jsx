@@ -1,16 +1,6 @@
 import './styled/Reviews.css';
 
 const Reviews = ({ onGetReviews }) => {
-  // const { movieId } = useParams();
-  // const [reviews, setReviews] = useState({});
-
-  // useEffect(() => {
-  
-  //   getReviewsMovie(movieId).then(res => {
-  //     setReviews(res.results);
-  //   });
-  // }, [movieId]);
-
   const MAX_LENGTH = 400;
 
   console.log('onGetReviews', onGetReviews);
@@ -21,18 +11,18 @@ const Reviews = ({ onGetReviews }) => {
       {onGetReviews.length ? (
         <ul className="list-reviews">
           {onGetReviews.map(({ id, author, author_details, url, content }) => (
-            <li key={id}>
+            <li className='item-reviews' key={id}>
               <div>
-                <div className='title-review'>
+                <div className="title-review">
                   <p>
-                    <strong>A review by {author}</strong>
+                    <strong>A review by <span className='author-accent'>{author}</span></strong>
                   </p>
-                  <span className='rating-info'>
+                  <span className="rating-info">
                     <i className="bx bxs-star"></i>
                     {author_details.rating}.0
                   </span>
                 </div>
-                <p>
+                <p className='text-info-reviews'>
                   {content.length > MAX_LENGTH
                     ? `${content.slice(0, MAX_LENGTH)}...`
                     : content}

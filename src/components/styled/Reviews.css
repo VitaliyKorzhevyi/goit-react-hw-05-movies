@@ -1,11 +1,29 @@
 .container-reviews {
+  position: relative;
   max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 20px 60px;
+  margin: 16px auto 0;
+  padding: 0 10px 60px;
+  background-color: rgba(0, 0, 0, 0.411);
+  border-radius: 4px;
 }
 
 .container-reviews h3 {
-  padding: 28px 0 16px;
+  text-align: center;
+  padding: 20px 0 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+}
+
+.list-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item-reviews {
+  padding: 10px 10px 20px;
+  background-color: rgba(255, 255, 255, 0.171);
+  border-radius: 8px;
 }
 
 .title-review {
@@ -21,5 +39,19 @@
     border-radius: 4px;
 }
 
-/* .more-reviews {
-} */
+.text-info-reviews {
+  padding-top: 8px;
+  text-align: justify;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.author-accent {
+  color: rgb(253, 237, 96);
+  font-family: 'Libre Baskerville', serif;
+  /* font-size: 24px; */
+}
+
+.more-reviews {
+  color: rgb(0, 133, 250);
+  font-family: 'League Spartan', sans-serif;
+}

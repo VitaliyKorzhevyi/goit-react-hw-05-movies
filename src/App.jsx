@@ -13,7 +13,7 @@ export const App = () => {
 
   const [castData, setCastData] = useState({});
   const [reviewsData, setReviewsData] = useState({});
-  // console.log("castData", castData)
+ 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
