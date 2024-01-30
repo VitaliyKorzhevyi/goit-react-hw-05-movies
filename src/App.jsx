@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 const Layout = lazy(() => import('./components/Layout.jsx'));
 
@@ -11,14 +11,17 @@ const Layout = lazy(() => import('./components/Layout.jsx'));
 
 export const App = () => {
 
+  const [castData, setCastData] = useState({});
+  const [reviewsData, setReviewsData] = useState({});
+  // console.log("castData", castData)
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
-        <Route path="movies/:movieId" element={<Details />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+        <Route path="movies/:movieId" element={<Details onGetCast={setCastData} onGetReviews={setReviewsData}/>}>
+          <Route path="cast" element={<Cast onGetCast={castData}/>} />
+          <Route path="reviews" element={<Reviews onGetReviews={reviewsData}/>} />
         </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Route>

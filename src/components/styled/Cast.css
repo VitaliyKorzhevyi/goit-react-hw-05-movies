@@ -1,13 +1,20 @@
 .container-cast {
-  max-width: 1240px;
+  /* max-width: 1240px; */
   margin: 0 auto;
+  padding: 0 20px 160px;
+  /* background-color: rgba(65, 65, 65, 0.274); */
 }
 
 .container-cast h3 {
+    max-width: 1240px;
+    margin: 0 auto;
   padding: 28px 0 16px;
 }
 
 .list-cast {
+    max-width: 1240px;
+    margin: 0 auto;
+    /* background-color: rgba(65, 65, 65, 0.274); */
   display: flex;
   gap: 16px;
   padding: 4px 0 16px 2px;

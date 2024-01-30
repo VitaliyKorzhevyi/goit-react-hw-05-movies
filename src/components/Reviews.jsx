@@ -1,29 +1,26 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-
 import './styled/Reviews.css';
-import { getReviewsMovie } from 'services/api';
 
-const Reviews = () => {
-  const { movieId } = useParams();
-  const [reviews, setReviews] = useState({});
+const Reviews = ({ onGetReviews }) => {
+  // const { movieId } = useParams();
+  // const [reviews, setReviews] = useState({});
 
-  useEffect(() => {
-    getReviewsMovie(movieId).then(res => {
-      setReviews(res.results);
-    });
-  }, [movieId]);
+  // useEffect(() => {
+  
+  //   getReviewsMovie(movieId).then(res => {
+  //     setReviews(res.results);
+  //   });
+  // }, [movieId]);
 
   const MAX_LENGTH = 400;
 
-  console.log('reviews', reviews);
+  console.log('onGetReviews', onGetReviews);
 
   return (
     <div className="container-reviews">
       <h3>Reviews</h3>
-      {reviews.length ? (
+      {onGetReviews.length ? (
         <ul className="list-reviews">
-          {reviews.map(({ id, author, author_details, url, content }) => (
+          {onGetReviews.map(({ id, author, author_details, url, content }) => (
             <li key={id}>
               <div>
                 <div className='title-review'>
