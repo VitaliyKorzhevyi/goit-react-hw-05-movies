@@ -1,33 +1,84 @@
+.container-main {
+  margin: 0 auto;
+}
+
+.big-poster {
+  position: relative;
+  margin: 0 auto;
+  width: 1440px;
+  max-height: 40%;
+}
+
+.big-poster img {
+  min-height: 70%;
+  width: 100%;
+}
+
+.button-previous,
+.button-next {
+  position: absolute;
+  top: 42%;
+  height: 120px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(177, 177, 177);
+  background-color: rgba(70, 69, 69, 0.397);
+  border: none;
+  border-radius: 4px;
+}
+
+.button-previous {
+  left: -36px;
+}
+
+.button-next {
+  right: -36px;
+}
+
+.button-previous:hover,
+.button-next:hover {
+  color: #e7e7e7;
+  background-color: rgba(71, 70, 70, 0.541);
+}
+
+.item-trending:not(#movie-0) .main-poster {
+  display: none;
+}
+
+.item-trending:nth-child(1) {
+  display: none;
+}
+
 .container-list-trending {
-    position: relative;
-    width: 1230px;
-    margin: 0 auto;
-    padding: 20px 15px;
+  width: 1240px;
+  padding: 20px 15px;
+  margin: 0 auto;
 }
 
 .item-trending {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.list-trending img {
+.poster-list-trending {
   display: none;
   padding-right: 15px;
 }
 
-
 .item-trending:hover {
-    color: azure;
-    background-color: black;
+  color: azure;
+  background-color: black;
 }
 
-.item-trending:hover img {
+.item-trending:hover .poster-list-trending {
   display: block;
 }
 
-
 .poster-list-trending {
-    position: absolute;
-    height: 600px;
-    top: 50px;
-    right: 0;
+  position: absolute;
+  height: 600px;
+  top: 50px;
+  right: 0;
 }

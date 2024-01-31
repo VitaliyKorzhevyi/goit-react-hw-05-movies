@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const KEY = 'da273fadec6e0549daf77f4eda281870';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
@@ -11,8 +12,8 @@ const makeRequest = async path => {
     });
     return response.data;
   } catch (error) {
+    toast.error('Error')
     console.error(error);
-    throw error;
   }
 };
 

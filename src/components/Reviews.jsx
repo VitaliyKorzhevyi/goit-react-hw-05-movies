@@ -37,7 +37,7 @@ const Reviews = ({ onGetReviews }) => {
           ))}
         </ul>
       ) : (
-        <p>We don't have any information about reviews of this movie.</p>
+        <p>We don't have any information about reviews of this movie =(</p>
       )}
     </div>
   );

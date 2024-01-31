@@ -4,16 +4,17 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getCastMovie, getIdMovie, getReviewsMovie } from 'services/api';
 
 import './styled/Details.css';
-import placeholderBackdrop from "../images/placeholderBackdropDetails.jpg";
-import placeholderPoster from "../images/placeholderPosterSearch.png";
+import placeholderBackdrop from '../images/placeholderBackdropDetails.jpg';
+import placeholderPoster from '../images/placeholderPosterSearch.png';
+import Loader from 'components/Loader';
 
-
-const Details = ({ onGetCast, onGetReviews}) => {
+const Details = ({ onGetCast, onGetReviews }) => {
   const { movieId } = useParams();
   const location = useLocation();
   const lastPage = location.state?.from ?? '/';
 
   const [movies, setMovies] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   // Memoized get запити
   const memoMovie = useMemo(() => getIdMovie(movieId), [movieId]);
@@ -21,7 +22,12 @@ const Details = ({ onGetCast, onGetReviews}) => {
   const memoReviews = useMemo(() => getReviewsMovie(movieId), [movieId]);
 
   useEffect(() => {
-    memoMovie.then(setMovies);
+    memoMovie.then(res => {
+      if (!res.length > 0) {
+        setMovies(res)
+        setIsLoading(true);
+      }
+    });
     memoCast.then(res => {
       onGetCast(res.cast);
     });
@@ -56,72 +62,86 @@ const Details = ({ onGetCast, onGetReviews}) => {
             </button>
           </Link>
         </div>
-        <div>
-          <img
-            className="background-image"
-            src={backdrop_path ? `https://image.tmdb.org/t/p/w500/${backdrop_path}` : placeholderBackdrop}
-            alt={title}
-          />
-          <div className="details-content">
-            <ul className="details-list">
-              <li>
-                <h2 className="title-details">
-                  {title} ({release_date && release_date.slice(0, 4)})
-                </h2>
-              </li>
-              <li className="item-details one-info">
-                <p>
-                  {production_countries &&
-                    production_countries.map(i => i.name).join(', ')}
-                </p>
-                <p>{genres && genres.map(i => i.name).join(', ')}</p>
-              </li>
-              <li className="item-details one-info">
-                <p>
-                  <strong>Language: </strong>
-                  {original_language}
-                </p>
-                <p>
-                  {runtime} minutes / {Math.round(runtime / 60)} hours
-                </p>
-                <p>
-                  <strong>Range:</strong> {vote_average}
-                </p>
-                <p>
-                  <strong>Popularity:</strong>{' '}
-                  {Math.floor(popularity * 10) / 10}
-                </p>
-              </li>
-              <li className="item-details three-info">
-                <p>{overview}</p>
-              </li>
-              <li className='item-details btns-info'>
-                <button type="button" className='btn-watch'>
-                <i className='bx bx-right-arrow' ></i>
-                  <a href={homepage}>Watch</a>
-                </button>
-                <Link to={'cast'}>
-                  <button type="button" className='btn-link'>Top Billed Cast</button>
-                </Link>
-                <Link to={'reviews'}>
-                  <button type="button" className='btn-link'>Reviews</button>
-                </Link>
-              </li>
-            </ul>
+        {isLoading ? (
+          <div>
             <img
-              src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : placeholderPoster}
+              className="background-image"
+              src={
+                backdrop_path
+                  ? `https://image.tmdb.org/t/p/w500/${backdrop_path}`
+                  : placeholderBackdrop
+              }
               alt={title}
             />
+            <div className="details-content">
+              <ul className="details-list">
+                <li>
+                  <h2 className="title-details">
+                    {title} ({release_date && release_date.slice(0, 4)})
+                  </h2>
+                </li>
+                <li className="item-details one-info">
+                  <p>
+                    {production_countries &&
+                      production_countries.map(i => i.name).join(', ')}
+                  </p>
+                  <p>{genres && genres.map(i => i.name).join(', ')}</p>
+                </li>
+                <li className="item-details one-info">
+                  <p>
+                    <strong>Language: </strong>
+                    {original_language}
+                  </p>
+                  <p>
+                    {runtime} minutes / {Math.round(runtime / 60)} hours
+                  </p>
+                  <p>
+                    <strong>Range:</strong> {vote_average}
+                  </p>
+                  <p>
+                    <strong>Popularity:</strong>{' '}
+                    {Math.floor(popularity * 10) / 10}
+                  </p>
+                </li>
+                <li className="item-details three-info">
+                  <p>{overview}</p>
+                </li>
+                <li className="item-details btns-info">
+                  <button type="button" className="btn-watch">
+                    <i className="bx bx-right-arrow"></i>
+                    <a href={homepage}>Watch</a>
+                  </button>
+                  <Link to={'cast'}>
+                    <button type="button" className="btn-link">
+                      Top Billed Cast
+                    </button>
+                  </Link>
+                  <Link to={'reviews'}>
+                    <button type="button" className="btn-link">
+                      Reviews
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+              <img
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                    : placeholderPoster
+                }
+                alt={title}
+              />
+            </div>
           </div>
-        </div>
+        ) : <Loader/>}
       </div>
-      <div className='ellipse-desktop-1'></div>
-      <div className='ellipse-desktop-2'></div>
-      <div className='ellipse-desktop-3'></div>
-      <div className='ellipse-desktop-4'></div>
-      <div className='ellipse-desktop-5'></div>
+      <div className="ellipse-desktop-1"></div>
+      <div className="ellipse-desktop-2"></div>
+      <div className="ellipse-desktop-3"></div>
+      <div className="ellipse-desktop-4"></div>
+      <div className="ellipse-desktop-5"></div>
       <Suspense>
-           <Outlet />
+        <Outlet />
       </Suspense>
     </>
   );

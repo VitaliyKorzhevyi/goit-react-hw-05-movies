@@ -1,10 +1,14 @@
 import { useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { getSearchMovie } from 'services/api';
+import { toast } from 'react-toastify';
 
-import './styled/Movies.css';
+import { getSearchMovie } from 'services/api';
+import { Placeholder } from 'components/Loader';
+
 import placeholderBackdrop from '../images/placeholderBackdropSearch.jpg';
 import placeholderPoster from '../images/placeholderPosterSearch.png';
+
+import './styled/Movies.css';
 
 const Movies = () => {
   const location = useLocation();
@@ -15,6 +19,11 @@ const Movies = () => {
   const onSearchListMovies = useMemo(() => {
     return () => {
       getSearchMovie(search).then(res => {
+        console.log("res", res.results)
+        if (res.results.length === 0) {
+         toast.info(`Your search for "${search}" did not have any matches.`)
+         return
+        }
         setSearchData(res.results);
       });
     };
@@ -110,7 +119,11 @@ const Movies = () => {
             )
           )}
         </ul>
-      ) : null}
+      ) : (
+        <div className='placeholder-search'>
+          <Placeholder />
+        </div>
+      )}
     </div>
   );
 };
