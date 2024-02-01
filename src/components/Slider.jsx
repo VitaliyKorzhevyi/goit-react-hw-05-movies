@@ -35,7 +35,6 @@ import sliderImages from 'images/slider';
 
 const Carousel = () => {
 
-
     
     const sliderRef = useRef(null);
 
