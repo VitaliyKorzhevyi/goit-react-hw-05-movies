@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { getSearchMovie } from 'services/api';
@@ -12,27 +12,23 @@ import './styled/Movies.css';
 
 const Movies = () => {
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [search, setSearch] = useState([]);
   const [searchData, setSearchData] = useState([]);
 
   const onSearchListMovies = useMemo(() => {
-    return () => {
-      getSearchMovie(search).then(res => {
-        console.log("res", res.results)
-        if (res.results.length === 0) {
-         toast.info(`Your search for "${search}" did not have any matches.`)
-         return
-        }
-        setSearchData(res.results);
-      });
-    };
-  }, [search]);
+    const search = searchParams.get('name');
+    if (search === null) return;
+    getSearchMovie(search).then(resp => {
+      setSearchData(resp.results);
+    });
+  }, [searchParams]);
 
-  const onInputKeyDown = e => {
-    if (e.key === 'Enter') {
-      onSearchListMovies();
-    }
+  const updateQueryString = query => {
+    query.preventDefault();
+    const name = query.target.value;
+    const nextParams = name !== '' && { name };
+    setSearchParams(nextParams);
   };
 
   console.log('searchData', searchData);
@@ -44,9 +40,8 @@ const Movies = () => {
           type="text"
           className="input-search"
           placeholder="Search movie..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          onKeyDown={onInputKeyDown}
+          value={searchParams.get('name') || ''}
+          onChange={updateQueryString}
         />
         <button
           className="btn-search"
@@ -120,7 +115,7 @@ const Movies = () => {
           )}
         </ul>
       ) : (
-        <div className='placeholder-search'>
+        <div className="placeholder-search">
           <Placeholder />
         </div>
       )}
