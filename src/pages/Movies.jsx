@@ -11,16 +11,14 @@ import placeholderPoster from '../images/placeholderPosterSearch.png';
 import './styled/Movies.css';
 
 const Movies = () => {
-  const location = useLocation();
+  const [searchFilm, setSearchFilm] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const [searchData, setSearchData] = useState([]);
-
-  const onSearchListMovies = useMemo(() => {
+  const location = useLocation();
+  useEffect(() => {
     const search = searchParams.get('name');
     if (search === null) return;
     getSearchMovie(search).then(resp => {
-      setSearchData(resp.results);
+      setSearchFilm(resp.results);
     });
   }, [searchParams]);
 
@@ -31,8 +29,6 @@ const Movies = () => {
     setSearchParams(nextParams);
   };
 
-  console.log('searchData', searchData);
-
   return (
     <div className="container-search">
       <div className="container-search-input">
@@ -42,18 +38,19 @@ const Movies = () => {
           placeholder="Search movie..."
           value={searchParams.get('name') || ''}
           onChange={updateQueryString}
+          // onKeyDown={onInputKeyDown}
         />
-        <button
+        {/* <button
           className="btn-search"
           type="button"
-          onClick={onSearchListMovies}
+          onClick={handleClick}
         >
           <i className="bx bx-search bx-sm bx-burst-hover"></i>
-        </button>
+        </button> */}
       </div>
-      {searchData.length > 0 ? (
+      {searchFilm.length > 0 ? (
         <ul className="list-search">
-          {searchData.map(
+          {searchFilm.map(
             ({
               id,
               original_title,
@@ -115,7 +112,7 @@ const Movies = () => {
           )}
         </ul>
       ) : (
-        <div className="placeholder-search">
+        <div className='placeholder-search'>
           <Placeholder />
         </div>
       )}
