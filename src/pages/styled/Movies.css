@@ -124,6 +124,7 @@
   padding-top: 12px;
   display: flex;
   flex-direction: column-reverse;
+  gap: 6px;
 
   font-family: 'Josefin Sans', sans-serif;
   color: #f3f3f3;

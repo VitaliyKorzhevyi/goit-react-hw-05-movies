@@ -15,8 +15,8 @@ const Cast = ({ onGetCast }) => {
       <h3>Top Billed Cast</h3>
       {onGetCast.length ? (
         <ul className="list-cast" onWheel={onScroll}>
-          {onGetCast.map(({ id, name, character, profile_path }) => (
-            <li key={id} className="item-cast">
+          {onGetCast.map(({ name, character, profile_path }, index) => (
+            <li key={index} className="item-cast">
               <img
                 src={
                   profile_path

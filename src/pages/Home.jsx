@@ -4,6 +4,7 @@ import { getListTrending } from 'services/api';
 import Loader from 'components/Loader';
 
 import placeholderPoster from '../images/placeholderPosterSearch.png';
+import honeyComb from '../images/honeyСomb.png';
 
 import './styled/Home.css';
 import Carousel from 'components/Slider';
@@ -23,22 +24,55 @@ const Home = () => {
     });
   }, []);
 
-  console.log('movies', movies);
+  const onScroll = e => {
+    const container = e.currentTarget;
+    const delta = e.deltaY || e.detail || e.wheelDelta;
+    container.scrollLeft += delta;
+  };
 
-  // https://www.dunemovie.net/ до постера
   return (
     <div className="container-main">
       {isLoading ? (
         <div>
-          {movies.map(({ id, title, poster_path, backdrop_path }, index) => (
+          <img className='honeycomb' src={honeyComb} alt="" />
+          {movies.map(({ id }, index) => (
             <div className="big-poster" key={index}>
               {index === 0 && (
-                // Рендер разметки для первого элемента
-                <div className=''>
+                <div>
                   <Carousel />
-                  <Link state={{ from: location }} to={`movies/${id}`}>
-                    <p className="title-trending-movies">{title}</p>
-                  </Link>
+                  <ul className="info-poster">
+                    <li className="item-title-poster">
+                      <h1 className="title-trending-movies">
+                        The <span>B</span>eekeeper
+                      </h1>
+                    </li>
+                    <li className="item-overview-poster">
+                      <p>
+                        One man's brutal campaign for vengeance takes on
+                        national stakes after he is revealed to be a former
+                        operative of a powerful and clandestine organization
+                        known as "Beekeepers".
+                      </p>
+                    </li>
+                    <li className="item-details-poster">
+                      <p>2024</p>
+                      <p>United Kingdom, United States of America</p>
+                      <p>105 minutes / 1 hour 45 minutes</p>
+                    </li>
+                  </ul>
+                  <div className="main-poster-btns">
+                    <a href="https://www.youtube.com/watch?v=SzINZZ6iqxY&ab_channel=MGM">
+                      <button className="btn-watch-trailer" type="button">
+                        Watch Trailer
+                      </button>
+                    </a>
+
+                    <Link state={{ from: location }} to={`movies/${id}`}>
+                      <button className="btn-link-more" type="button">
+                        i
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -47,30 +81,24 @@ const Home = () => {
       ) : (
         <Loader />
       )}
-
       <div className="container-list-trending">
         <h2>Trending movies today</h2>
         {isLoading ? (
-          <ul className="list-trending">
+          <ul className="list-trending" onWheel={onScroll}>
             {movies.map(({ id, title, poster_path, backdrop_path }, index) => (
               <li className="item-trending" key={index} id={`movie-${index}`}>
-                <img
-                  className="main-poster"
-                  src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
-                  alt={title}
-                />
                 <Link state={{ from: location }} to={`movies/${id}`}>
-                  <p className="title-trending-movies">{title}</p>
+ 
+                  <img
+                    className="poster-list-trending"
+                    src={
+                      poster_path
+                        ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+                        : placeholderPoster
+                    }
+                    alt={title}
+                  />
                 </Link>
-                <img
-                  className="poster-list-trending"
-                  src={
-                    poster_path
-                      ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-                      : placeholderPoster
-                  }
-                  alt={title}
-                />
               </li>
             ))}
           </ul>
@@ -78,6 +106,11 @@ const Home = () => {
           <Loader />
         )}
       </div>
+      <div className="ellipse-desktop-6"></div>
+      <div className="ellipse-desktop-7"></div>
+      <div className="ellipse-desktop-8"></div>
+      <div className="ellipse-desktop-9"></div>
+      <div className="ellipse-desktop-10"></div>
     </div>
   );
 };

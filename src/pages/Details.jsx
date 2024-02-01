@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { getCastMovie, getIdMovie, getReviewsMovie } from 'services/api';
 
 import './styled/Details.css';
+
 import placeholderBackdrop from '../images/placeholderBackdropDetails.jpg';
 import placeholderPoster from '../images/placeholderPosterSearch.png';
 import Loader from 'components/Loader';
@@ -24,7 +25,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
   useEffect(() => {
     memoMovie.then(res => {
       if (!res.length > 0) {
-        setMovies(res)
+        setMovies(res);
         setIsLoading(true);
       }
     });
@@ -36,7 +37,6 @@ const Details = ({ onGetCast, onGetReviews }) => {
     });
   }, [memoMovie, memoCast, memoReviews, onGetCast, onGetReviews]);
 
-  console.log('movies', movies);
   const {
     title,
     overview,
@@ -50,6 +50,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
     original_language,
     popularity,
     homepage,
+    tagline,
   } = movies;
 
   return (
@@ -80,36 +81,65 @@ const Details = ({ onGetCast, onGetReviews }) => {
                     {title} ({release_date && release_date.slice(0, 4)})
                   </h2>
                 </li>
-                <li className="item-details one-info">
+                <li className="item-details tagline-info">
                   <p>
-                    {production_countries &&
-                      production_countries.map(i => i.name).join(', ')}
+                    Tagline:{' '}
+                    <span>
+                      <strong> "{tagline}"</strong>
+                    </span>
                   </p>
-                  <p>{genres && genres.map(i => i.name).join(', ')}</p>
                 </li>
-                <li className="item-details one-info">
-                  <p>
-                    <strong>Language: </strong>
-                    {original_language}
-                  </p>
-                  <p>
-                    {runtime} minutes / {Math.round(runtime / 60)} hours
-                  </p>
-                  <p>
-                    <strong>Range:</strong> {vote_average}
-                  </p>
-                  <p>
-                    <strong>Popularity:</strong>{' '}
-                    {Math.floor(popularity * 10) / 10}
-                  </p>
+                <li className="item-details more-info">
+                  <span className="one-info">
+                    <p>
+                      Genres:{' '}
+                      <strong>
+                        {genres && genres.map(i => i.name).join(', ')}
+                      </strong>
+                    </p>
+                    <p>
+                      {' '}
+                      Countries:
+                      <strong>
+                        {' '}
+                        {production_countries &&
+                          production_countries.map(i => i.name).join(', ')}
+                      </strong>
+                    </p>
+                    <p>
+                      Language:
+                      <strong> {original_language}</strong>
+                    </p>
+                  </span>
+                  <span className="two-info">
+                    <p>
+                      Runtime:{' '}
+                      <strong>
+                        {runtime} minutes / {Math.round(runtime / 60)} hours
+                      </strong>
+                    </p>
+                    <p>
+                      Range:{' '}
+                      <strong>{Math.floor(vote_average * 10) / 10}</strong>
+                    </p>
+
+                    <p>
+                      Popularity:
+                      <strong> {Math.floor(popularity * 10) / 10}</strong>
+                    </p>
+                  </span>
                 </li>
                 <li className="item-details three-info">
+                  <h3>Overview</h3>
                   <p>{overview}</p>
                 </li>
                 <li className="item-details btns-info">
-                  <button type="button" className="btn-watch">
+                  <button
+                    type="button"
+                    className={homepage ? 'btn-watch' : 'btn-watch-none'}
+                  >
                     <i className="bx bx-right-arrow"></i>
-                    <a href={homepage}>Watch</a>
+                    <a href={homepage ? homepage : ''}>Watch</a>
                   </button>
                   <Link to={'cast'}>
                     <button type="button" className="btn-link">
@@ -133,7 +163,9 @@ const Details = ({ onGetCast, onGetReviews }) => {
               />
             </div>
           </div>
-        ) : <Loader/>}
+        ) : (
+          <Loader />
+        )}
       </div>
       <div className="ellipse-desktop-1"></div>
       <div className="ellipse-desktop-2"></div>

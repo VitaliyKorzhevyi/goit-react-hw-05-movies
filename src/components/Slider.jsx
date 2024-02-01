@@ -51,14 +51,14 @@ const Carousel = () => {
       }
     };
   const settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
-    speed: 1000,
+    speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 5000, // Время автоматического переключения в миллисекундах (здесь 3 секунды)
+    autoplaySpeed: 7000, // Время автоматического переключения в миллисекундах (здесь 3 секунды)
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />,
   };
@@ -68,16 +68,16 @@ const Carousel = () => {
     <Slider ref={sliderRef} {...settings}>
       {sliderImages.map((image, index) => (
         <div key={index}>
-          <img src={image} alt={`Изображение ${index + 1}`} />
+          <img className='images-slider' src={image} alt={`Изображение ${index + 1}`} />
         </div>
       ))}
     </Slider>
           <div style={{ textAlign: 'center' }}>
           <button className="button-previous" onClick={previous}>
-          <i class='bx bx-chevron-left bx-sm'></i>
+          <i className='bx bx-chevron-left bx-sm'></i>
           </button>
           <button className="button-next" onClick={next}>
-          <i class='bx bx-chevron-right bx-sm'></i>
+          <i className='bx bx-chevron-right bx-sm'></i>
           </button>
         </div>
     </div>

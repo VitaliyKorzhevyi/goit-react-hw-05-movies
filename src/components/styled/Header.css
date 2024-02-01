@@ -1,14 +1,19 @@
+.container-header {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
 .list-nav {
   display: flex;
   align-items: center;
   column-gap: 12px;
-  max-width: 1230px;
   margin: 0 auto;
   padding: 12px 15px;
 }
 
 .list-nav li:nth-child(1) {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .logo {
@@ -16,10 +21,28 @@
 }
 
 .nav-link {
+  color: #9b9b9b;
   padding: 8px;
-  background-color: rgb(146, 146, 146);
+  background-color: inherit;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
 }
 
 .active {
-  background-color: aqua;
+  color: #fff;
+}
+
+.header-title {
+  position: absolute;
+  top: 36px;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fcd659;
+  text-align: center;
 }
