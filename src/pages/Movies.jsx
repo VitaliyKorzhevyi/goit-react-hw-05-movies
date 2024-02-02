@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 import { getSearchMovie } from 'services/api';
 import { Placeholder } from 'components/Loader';
