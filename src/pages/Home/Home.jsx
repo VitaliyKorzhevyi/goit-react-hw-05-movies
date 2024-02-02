@@ -9,7 +9,6 @@ import honeyComb from '../../images/honeyСomb.png';
 import s from './Home.module.css';
 import Carousel from 'components/Slider/Slider';
 
-
 const Home = () => {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
@@ -88,7 +87,6 @@ const Home = () => {
             {movies.map(({ id, title, poster_path }, index) => (
               <li className={s.itemTrending} key={index} id={`movie-${index}`}>
                 <Link state={{ from: location }} to={`movies/${id}`}>
- 
                   <img
                     src={
                       poster_path

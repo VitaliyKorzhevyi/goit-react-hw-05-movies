@@ -28,9 +28,7 @@ const Carousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 7000, // Время автоматического переключения в миллисекундах (здесь 3 секунды)
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
+    autoplaySpeed: 7000,
   };
 
   return (
