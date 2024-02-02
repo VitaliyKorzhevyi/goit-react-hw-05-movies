@@ -47,7 +47,7 @@ const Cast = () => {
           ))}
         </ul>
       ) : (
-        <p>We don't have any information about cast of this movie.</p>
+        <p className={s.invalidText}>We don't have any information about cast of this movie.</p>
       )}
     </div>
   );
