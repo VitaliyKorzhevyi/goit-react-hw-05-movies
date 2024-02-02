@@ -1,4 +1,4 @@
-.container-details {
+.container {
   position: relative;
   max-width: 1240px;
   margin: 0 auto;
@@ -6,94 +6,13 @@
   z-index: 1;
 }
 
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  filter: blur(4px);
-  z-index: -1;
-}
-
-.details-content {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.details-content img {
-  -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
-  -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
-  max-height: 600px;
-}
-
-.details-list {
-  background-color: #0000008a;
-  color: #fff;
-  padding: 8px;
-  border-radius: 12px;
-  max-width: 600px;
-
-  height: 100%;
-}
-
-.item-details {
-  padding: 0 8px;
-}
-
-.title-details {
-  padding: 10px 4px 8px 8px;
-  margin-bottom: 20px;
-  font-family: 'League Spartan', sans-serif;
-  font-weight: 600;
-  font-size: 32px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.363);
-  border-radius: 8px;
-}
-
-.item-details.more-info {
-  display: flex;
-  gap: 14px;
-  font-size: 14px;
-  color: #f0f0f0;
-  padding: 20px 12px;
-}
-
-.item-details.more-info strong {
-  color: #ffffff;
-}
-
-.more-info span{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1; /*! */
-}
-
-.three-info h3 {
-  font-family: 'Montserrat', sans-serif;
-  margin-bottom: 16px;
-  border-bottom: 2px solid #fff;
-  width: 94px;
-}
-
-.three-info p {
-  text-align: justify;
-  font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.container-btn-last {
+.btnLast {
   position: absolute;
   top: 0;
   left: -58px;
 }
 
-.container-btn-last button {
+.btnLast button {
   padding: 6px 6px;
   color: #acacac;
   background-color: #41414150;
@@ -105,31 +24,113 @@
     border-color 0.3s ease;
 }
 
-.tagline-info {
-  color: #f0f0f0;
-  padding: 0 8px;
-}
-
-.tagline-info p {
-  border-bottom: 2px solid #fff;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.tagline-info span {
-  margin-left: 2px;
-  color: #ffffff;
-  font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.container-btn-last button:hover {
+.btnLast button:hover {
   box-shadow: none;
   color: #e9e9e9;
   border-color: #c0c0c0;
   background-color: #4141418e;
 }
 
-.btn-watch {
+.backgroundImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  filter: blur(4px);
+  z-index: -1;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.content img {
+  -webkit-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
+  max-height: 600px;
+}
+
+.list {
+  background-color: #0000008a;
+  color: #fff;
+  padding: 8px;
+  border-radius: 12px;
+  max-width: 600px;
+
+  height: 100%;
+}
+
+.title {
+  padding: 10px 4px 8px 8px;
+  margin-bottom: 20px;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 8px;
+}
+
+.moreInfo {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  color: #f0f0f0;
+  padding: 20px 8px;
+}
+
+.moreInfo strong {
+  color: #ffffff;
+}
+
+.moreInfo span{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.threeInfo {
+padding: 0 8px;
+}
+
+.threeInfo h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #fff;
+  width: 94px;
+  
+}
+
+.threeInfo p {
+  text-align: justify;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.taglineInfo {
+  color: #f0f0f0;
+  padding: 0 8px;
+}
+
+.taglineInfo p {
+  border-bottom: 2px solid #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.taglineInfo span {
+  margin-left: 2px;
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.btnWatch {
   padding: 13px 30px 13px 24px;
   margin-right: 12px;
   color: #fff;
@@ -153,7 +154,7 @@
   font-weight: 500;
 }
 
-.btn-watch:hover {
+.btnWatch:hover {
   background-size: 420% 420%;
   animation: gradient-animation 4s ease-in;
 }
@@ -170,22 +171,22 @@
   }
 }
 
-.item-details.btns-info {
+.btnsInfo {
   display: flex;
   gap: 20px;
   align-items: center;
   padding: 28px 8px 40px;
 }
 
-.btn-watch i {
+.btnWatch i {
   margin: 2px 4px 4px 4px;
 }
 
-.btn-watch-none {
+.btnWatchNone {
   display: none;
 }
 
-.btn-link {
+.btnLink {
   height: 48px;
   padding: 0px 24px;
   color: #a1a1a1;
@@ -201,13 +202,13 @@
   font-size: 16px;
 }
 
-.btn-link:hover {
+.btnLink:hover {
   color: #ececec;
   background-color: #0000008e;
   border: 2px solid #ececec;
 }
 
-.btn-link:active {
+.btnLink:active {
   color: #ffffff;
   background-color: #000000bb;
   border: 2px solid #ffffff;
@@ -218,7 +219,7 @@
 
 /** Фон */
 
-.ellipse-desktop-1 {
+.ellipseDesktop1 {
   position: fixed;
   z-index: 0;
   width: 379px;
@@ -231,7 +232,7 @@
   cursor: default;
 }
 
-.ellipse-desktop-2 {
+.ellipseDesktop2 {
   position: fixed;
   z-index: 0;
   width: 379px;
@@ -244,7 +245,7 @@
   cursor: default;
 }
 
-.ellipse-desktop-3 {
+.ellipseDesktop3 {
   position: fixed;
   z-index: 0;
   width: 340px;
@@ -257,7 +258,7 @@
   cursor: default;
 }
 
-.ellipse-desktop-4 {
+.ellipseDesktop4 {
   position: fixed;
   z-index: 0;
   width: 280px;
@@ -270,7 +271,7 @@
   cursor: default;
 }
 
-.ellipse-desktop-5 {
+.ellipseDesktop5 {
   position: fixed;
   z-index: 0;
   width: 200px;

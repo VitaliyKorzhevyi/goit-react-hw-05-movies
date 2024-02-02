@@ -1,15 +1,15 @@
 import { Suspense, useEffect, useMemo, useState } from 'react';
 
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { getCastMovie, getIdMovie, getReviewsMovie } from 'services/api';
+import { getIdMovie } from 'services/api';
 
-import './styled/Details.css';
+import s from './Details.module.css';
 
-import placeholderBackdrop from '../images/placeholderBackdropDetails.jpg';
-import placeholderPoster from '../images/placeholderPosterSearch.png';
-import Loader from 'components/Loader';
+import placeholderBackdrop from '../../images/placeholderBackdropDetails.jpg'; 
+import placeholderPoster from '../../images/placeholderPosterSearch.png';
+import Loader from 'components/Loader/Loader';
 
-const Details = ({ onGetCast, onGetReviews }) => {
+const Details = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const lastPage = location.state?.from ?? '/';
@@ -17,10 +17,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
   const [movies, setMovies] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // Memoized get запити
   const memoMovie = useMemo(() => getIdMovie(movieId), [movieId]);
-  const memoCast = useMemo(() => getCastMovie(movieId), [movieId]);
-  const memoReviews = useMemo(() => getReviewsMovie(movieId), [movieId]);
 
   useEffect(() => {
     memoMovie.then(res => {
@@ -29,13 +26,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
         setIsLoading(true);
       }
     });
-    memoCast.then(res => {
-      onGetCast(res.cast);
-    });
-    memoReviews.then(res => {
-      onGetReviews(res.results);
-    });
-  }, [memoMovie, memoCast, memoReviews, onGetCast, onGetReviews]);
+  }, [memoMovie]);
 
   const {
     title,
@@ -55,8 +46,8 @@ const Details = ({ onGetCast, onGetReviews }) => {
 
   return (
     <>
-      <div className="container-details">
-        <div className="container-btn-last">
+      <div className={s.container}>
+        <div className={s.btnLast}>
           <Link to={lastPage}>
             <button type="button">
               <i className="bx bx-chevron-left bx-sm bx-fade-left-hover"></i>
@@ -66,7 +57,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
         {isLoading ? (
           <div>
             <img
-              className="background-image"
+              className={s.backgroundImg}
               src={
                 backdrop_path
                   ? `https://image.tmdb.org/t/p/w500/${backdrop_path}`
@@ -74,14 +65,14 @@ const Details = ({ onGetCast, onGetReviews }) => {
               }
               alt={title}
             />
-            <div className="details-content">
-              <ul className="details-list">
+            <div className={s.content}>
+              <ul className={s.list}>
                 <li>
-                  <h2 className="title-details">
+                  <h2 className={s.title}>
                     {title} ({release_date && release_date.slice(0, 4)})
                   </h2>
                 </li>
-                <li className="item-details tagline-info">
+                <li className={s.taglineInfo}>
                   <p>
                     Tagline:{' '}
                     <span>
@@ -89,8 +80,8 @@ const Details = ({ onGetCast, onGetReviews }) => {
                     </span>
                   </p>
                 </li>
-                <li className="item-details more-info">
-                  <span className="one-info">
+                <li className={s.moreInfo}>
+                  <span>
                     <p>
                       Genres:{' '}
                       <strong>
@@ -111,7 +102,7 @@ const Details = ({ onGetCast, onGetReviews }) => {
                       <strong> {original_language}</strong>
                     </p>
                   </span>
-                  <span className="two-info">
+                  <span>
                     <p>
                       Runtime:{' '}
                       <strong>
@@ -129,25 +120,25 @@ const Details = ({ onGetCast, onGetReviews }) => {
                     </p>
                   </span>
                 </li>
-                <li className="item-details three-info">
+                <li className={s.threeInfo}>
                   <h3>Overview</h3>
                   <p>{overview}</p>
                 </li>
-                <li className="item-details btns-info">
+                <li className={s.btnsInfo}>
                   <button
                     type="button"
-                    className={homepage ? 'btn-watch' : 'btn-watch-none'}
+                    className={homepage ? s.btnWatch : s.btnWatchNone}
                   >
                     <i className="bx bx-right-arrow"></i>
                     <a href={homepage ? homepage : ''}>Watch</a>
                   </button>
                   <Link to={'cast'}>
-                    <button type="button" className="btn-link">
+                    <button type="button" className={s.btnLink}>
                       Top Billed Cast
                     </button>
                   </Link>
                   <Link to={'reviews'}>
-                    <button type="button" className="btn-link">
+                    <button type="button" className={s.btnLink}>
                       Reviews
                     </button>
                   </Link>
@@ -167,11 +158,11 @@ const Details = ({ onGetCast, onGetReviews }) => {
           <Loader />
         )}
       </div>
-      <div className="ellipse-desktop-1"></div>
-      <div className="ellipse-desktop-2"></div>
-      <div className="ellipse-desktop-3"></div>
-      <div className="ellipse-desktop-4"></div>
-      <div className="ellipse-desktop-5"></div>
+      <div className={s.ellipseDesktop1}></div>
+      <div className={s.ellipseDesktop2}></div>
+      <div className={s.ellipseDesktop3}></div>
+      <div className={s.ellipseDesktop4}></div>
+      <div className={s.ellipseDesktop5}></div>
       <Suspense>
         <Outlet />
       </Suspense>

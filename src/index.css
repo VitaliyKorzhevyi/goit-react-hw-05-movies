@@ -14,10 +14,9 @@ body {
 }
 
 
+
 body {
   overflow-y: scroll; /* Добавим всегда скроллбар для предотвращения дергания страницы */
-  scrollbar-width: thin; /* тонкий скроллбар Firefox */
-  scrollbar-color: transparent transparent; /* цвет полосы и фона скроллбара Firefox */
 }
 
 /* При фокусе на элементах убираем цвет у фона и полосы скроллбара */
@@ -31,11 +30,11 @@ body:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #000; /* цвет полосы скроллбара */
+  background-color: #05002e83; /* цвет полосы скроллбара */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #b1b1b1; /* цвет фона скроллбара */
+  background-color: #b1b1b117; /* цвет фона скроллбара */
 }
 
 h1,
@@ -53,12 +52,10 @@ a {
   text-decoration: none;
 }
 
-
 svg {
   fill: currentColor;
 }
 
-.list,
 ul,
 li,
 ol {

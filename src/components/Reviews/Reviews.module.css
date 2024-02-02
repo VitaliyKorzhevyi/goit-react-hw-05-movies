@@ -1,4 +1,4 @@
-.container-reviews {
+.container {
   position: relative;
   max-width: 1240px;
   margin: 16px auto 0;
@@ -7,51 +7,50 @@
   border-radius: 4px;
 }
 
-.container-reviews h3 {
+.container h3 {
   text-align: center;
   padding: 20px 0 20px;
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
 }
 
-.list-reviews {
+.list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.item-reviews {
+.item {
   padding: 10px 10px 20px;
   background-color: rgba(255, 255, 255, 0.171);
   border-radius: 8px;
 }
 
-.title-review {
+.title {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.rating-info {
+.ratingInfo {
     color: white;
     background-color: black;
     padding: 4px;
     border-radius: 4px;
 }
 
-.text-info-reviews {
+.textInfo {
   padding-top: 8px;
   text-align: justify;
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.author-accent {
+.authorAccent {
   color: rgb(253, 237, 96);
   font-family: 'Libre Baskerville', serif;
-  /* font-size: 24px; */
 }
 
-.more-reviews {
+.more {
   color: rgb(0, 133, 250);
   font-family: 'League Spartan', sans-serif;
 }

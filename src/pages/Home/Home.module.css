@@ -1,10 +1,10 @@
-.container-main {
+.container {
   position: relative;
   z-index: 2;
   margin: 0 auto;
 }
 
-.honeycomb {
+.honeyComb {
   position: absolute;
   transform: rotate(10deg);
   width: 50%;
@@ -12,7 +12,7 @@
   left: 9%;
 }
 
-.big-poster {
+.bigPoster {
   position: relative;
   z-index: 2;
   margin: 0 auto;
@@ -20,13 +20,13 @@
   max-height: 40%;
 }
 
-.big-poster img {
+.bigPoster img {
   min-height: 70%;
   width: 100%;
 }
 
-.button-previous,
-.button-next {
+.btnPrevious,
+.btnNext {
   position: absolute;
   z-index: 2;
   top: 42%;
@@ -42,25 +42,25 @@
   border-radius: 4px;
 }
 
-.button-previous {
+.btnPrevious {
   left: -36px;
 }
 
-.button-next {
+.btnNext {
   right: -36px;
 }
 
-.button-previous:hover,
-.button-next:hover {
+.btnPrevious:hover,
+.btnNext:hover {
   color: #e7e7e7;
   background-color: rgba(71, 70, 70, 0.541);
 }
 
-.info-poster * {
+.infoPoster * {
   position: relative;
 }
 
-.info-poster {
+.infoPoster {
   position: absolute;
   top: 65%;
   left: 3%;
@@ -69,7 +69,7 @@
   padding: 24px 16px 20px 24px;
 }
 
-.info-poster:before {
+.infoPoster:before {
   content: '';
   position: absolute;
   top: 0;
@@ -82,17 +82,21 @@
   border-radius: 12px;
 }
 
-.images-slider {
+.imgSlider {
   background-color: inherit;
 }
 
-.item-title-poster {
+.titlePoster {
   padding-bottom: 12px;
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
 }
 
-.item-overview-poster {
+.bigTitle span {
+  color: #ffd037;
+}
+
+.overviewPoster {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   line-height: 1.3;
@@ -100,24 +104,20 @@
   text-align: justify;
 }
 
-.title-trending-movies span {
-  color: #ffd037;
-}
-
-.item-details-poster {
+.detailsPoster {
   font-size: 12px;
   display: flex;
   gap: 44px;
 }
 
-.main-poster-btns {
+.posterBtns {
   position: absolute;
   top: 81.2%;
   right: 3%;
   display: flex;
 }
 
-.btn-watch-trailer {
+.btnWatch {
   height: 60px;
   padding: 0 38px 0 34px;
   margin-right: 12px;
@@ -156,7 +156,7 @@
   font-weight: 500;
 }
 
-.btn-watch-trailer:hover {
+.btnWatch:hover {
   background-size: 720% 720%;
   animation: gradient-animation 7s ;
 }
@@ -173,7 +173,7 @@
   }
 }
 
-.btn-link-more {
+.btnLinkMore {
   height: 60px;
   width: 60px;
   color: #a1a1a1;
@@ -189,21 +189,13 @@
   font-size: 20px;
 }
 
-.btn-link-more:hover {
+.btnLinkMore:hover {
   color: #ececec;
   background-color: #0000008e;
   border: 2px solid #ececec;
 }
 
-.item-trending:not(#movie-0) .main-poster {
-  display: none;
-}
-
-.item-trending:nth-child(1) {
-  display: none;
-}
-
-.container-list-trending {
+.containerList {
   position: relative;
   z-index: 2;
   max-width: 1440px;
@@ -211,18 +203,15 @@
   margin: 0 auto;
 }
 
-.container-list-trending h2 {
+.containerList h2 {
   padding: 20px 0;
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   text-align: center;
 }
 
-.item-trending {
-  cursor: pointer;
-}
 
-.list-trending {
+.listTrending {
   margin: 0 auto;
   display: flex;
   gap: 16px;
@@ -231,34 +220,43 @@
   height: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  
 }
 
-.list-trending::-webkit-scrollbar {
+.listTrending::-webkit-scrollbar {
   height: 10px;
   max-width: 20px;
   padding-right: 8px;
 }
 
-.list-trending::-webkit-scrollbar-thumb {
+.listTrending::-webkit-scrollbar-thumb {
   background-color: #5a5a5adc;
   border-radius: 6px;
 }
 
-.list-trending::-webkit-scrollbar-track {
+.listTrending::-webkit-scrollbar-track {
   background-color: rgba(70, 69, 69, 0.397);
 }
 
-.item-trending img {
+.itemTrending {
+  cursor: pointer;
+}
+
+.itemTrending:nth-child(1) {
+  display: none;
+}
+
+.itemTrending img {
   border-radius: 6px;
   height: 332px;
   transition: transform 0.2s ease-in-out;
 }
 
-.item-trending img:hover {
+.itemTrending img:hover {
   transform: scale(1.03);
 }
 
-.ellipse-desktop-6 {
+.ellipseDesktop6 {
   position: absolute;
   z-index: 0;
   width: 300px;
@@ -271,8 +269,7 @@
   cursor: default;
 }
 
-
-.ellipse-desktop-7 {
+.ellipseDesktop7 {
   position: absolute;
   z-index: 0;
   width: 300px;

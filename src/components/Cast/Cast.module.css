@@ -1,4 +1,4 @@
-.container-cast {
+.container {
   position: relative;
   margin: 16px auto 0;
   padding: 0 20px 80px;
@@ -6,7 +6,7 @@
   
 }
 
-.container-cast h3 {
+.container h3 {
   text-align: center;
   max-width: 1240px;
   margin: 0 auto;
@@ -16,7 +16,7 @@
   font-size: 24px;
 }
 
-.list-cast {
+.list {
   max-width: 1240px;
   margin: 0 auto;
   display: flex;
@@ -28,28 +28,22 @@
   overflow-y: hidden;
 }
 
-.list-cast::-webkit-scrollbar {
+.list::-webkit-scrollbar {
   height: 10px;
   max-width: 20px;
   padding-right: 8px;
 }
 
-.list-cast::-webkit-scrollbar-thumb {
+.list::-webkit-scrollbar-thumb {
   background-color: #dadadadc;
   border-radius: 6px;
 }
 
-.list-cast::-webkit-scrollbar-track {
+.list::-webkit-scrollbar-track {
   background-color: #f1f1f123;
 }
 
-.item-cast img {
-  border-radius: 6px 6px 0 0;
-  height: 228px;
-  max-width: 152px;
-}
-
-.item-cast {
+.item {
   padding-bottom: 12px;
   border-radius: 6px;
   background-color: #00000054;
@@ -57,7 +51,17 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.cast-name {
+.item:hover {
+  transform: scale(1.03);
+}
+
+.item img {
+  border-radius: 6px 6px 0 0;
+  height: 228px;
+  max-width: 152px;
+}
+
+.name {
   font-size: 16px;
   padding: 4px 10px 0;
   text-align: center;
@@ -65,12 +69,10 @@
 
 }
 
-.cast-character {
+.character {
   font-size: 14px;
   padding: 4px 10px;
   color: #cfcfcf;
   text-align: center;
 }
-.item-cast:hover {
-  transform: scale(1.03);
-}
+

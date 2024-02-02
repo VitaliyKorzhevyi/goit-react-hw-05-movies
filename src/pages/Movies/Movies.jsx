@@ -1,54 +1,73 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import { getSearchMovie } from 'services/api';
-import { Placeholder } from 'components/Loader';
+import { Placeholder } from 'components/Loader/Loader';
 
-import placeholderBackdrop from '../images/placeholderBackdropSearch.jpg';
-import placeholderPoster from '../images/placeholderPosterSearch.png';
+import placeholderBackdrop from '../../images/placeholderBackdropSearch.jpg';
+import placeholderPoster from '../../images/placeholderPosterSearch.png';
 
-import './styled/Movies.css';
+import s from './Movies.module.css';
+import { toast } from 'react-toastify';
 
 const Movies = () => {
   const [searchFilm, setSearchFilm] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [inputSearch, setInputSearch] = useState('');
   const location = useLocation();
-  useEffect(() => {
-    const search = searchParams.get('name');
-    if (search === null) return;
-    getSearchMovie(search).then(resp => {
-      setSearchFilm(resp.results);
-    });
-  }, [searchParams]);
+  const productName = searchParams.get('search');
 
-  const updateQueryString = query => {
-    query.preventDefault();
-    const name = query.target.value;
-    const nextParams = name !== '' && { name };
-    setSearchParams(nextParams);
+  useMemo(() => {
+    if (!productName) {
+      return;
+    }
+    getSearchMovie(productName).then(res => {
+      console.log('res', res.results);
+      if (res.results.length === 0) {
+        toast.info(
+          `Your search for "${productName}" did not have any matches.`
+        );
+        return;
+      }
+      setSearchFilm(res.results);
+      setInputSearch(productName);
+    });
+  }, [productName]);
+
+  const updateQueryString = e => {
+    e.preventDefault();
+    setSearchParams({
+      search: inputSearch,
+    });
+  };
+
+  const onKeyValue = e => {
+    if (e.key === 'Enter') {
+      updateQueryString(e);
+    }
+  };
+
+  const onValueString = e => {
+    setInputSearch(e.currentTarget.value);
   };
 
   return (
-    <div className="container-search">
-      <div className="container-search-input">
+    <div className={s.container}>
+      <div className={s.containerInput}>
         <input
           type="text"
-          className="input-search"
+          className={s.input}
           placeholder="Search movie..."
-          value={searchParams.get('name') || ''}
-          onChange={updateQueryString}
-          // onKeyDown={onInputKeyDown}
+          value={inputSearch}
+          onChange={onValueString}
+          onKeyDown={onKeyValue}
         />
-        {/* <button
-          className="btn-search"
-          type="button"
-          onClick={handleClick}
-        >
+        <button className={s.btn} type="button" onClick={updateQueryString}>
           <i className="bx bx-search bx-sm bx-burst-hover"></i>
-        </button> */}
+        </button>
       </div>
       {searchFilm.length > 0 ? (
-        <ul className="list-search">
+        <ul className={s.list}>
           {searchFilm.map(
             ({
               id,
@@ -62,8 +81,8 @@ const Movies = () => {
               release_date,
             }) => (
               <Link key={id} state={{ from: location }} to={`${id}`}>
-                <li className="item-search">
-                  <div className="img-search-backdrop">
+                <li className={s.item}>
+                  <div className={s.imgBackdrop}>
                     <img
                       src={
                         backdrop_path
@@ -74,10 +93,10 @@ const Movies = () => {
                     />
                   </div>
 
-                  <ul className="main-info-search">
+                  <ul className={s.mainInfo}>
                     <li>
                       <img
-                        className="img-search-poster"
+                        className={s.imgPoster}
                         src={
                           poster_path
                             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -86,9 +105,9 @@ const Movies = () => {
                         alt={title}
                       />
                     </li>
-                    <li className="info-search-item">
-                      <p className="title-search-item">{original_title}</p>
-                      <p className="text-search-item">
+                    <li className={s.infoItem}>
+                      <p className={s.titleItem}>{original_title}</p>
+                      <p className={s.textItem}>
                         <span>
                           <strong>Original language: </strong>
                           {original_language}
@@ -111,7 +130,7 @@ const Movies = () => {
           )}
         </ul>
       ) : (
-        <div className='placeholder-search'>
+        <div className={s.placeholder}>
           <Placeholder />
         </div>
       )}

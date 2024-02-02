@@ -1,10 +1,10 @@
 import { Puff, Triangle } from 'react-loader-spinner';
 
-import './styled/Loader.css';
+import s from './Loader.module.css';
 
 const Loader = () => {
   return (
-    <div className="container-loader">
+    <div className={s.container}>
       <Puff
         height="80"
         width="80"
