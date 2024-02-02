@@ -17,7 +17,6 @@ const Home = () => {
 
   useEffect(() => {
     getListTrending().then(res => {
-      console.log('res.results', res.results);
       if (res.results.length > 0) {
         setMovies(res.results);
         setIsLoading(true);

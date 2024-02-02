@@ -22,7 +22,6 @@ const Movies = () => {
       return;
     }
     getSearchMovie(productName).then(res => {
-      console.log('res', res.results);
       if (res.results.length === 0) {
         toast.info(
           `Your search for "${productName}" did not have any matches.`
