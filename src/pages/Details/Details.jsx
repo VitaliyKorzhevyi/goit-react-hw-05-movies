@@ -1,19 +1,18 @@
 import { Suspense, useEffect, useMemo, useState } from 'react';
 
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getIdMovie } from 'services/api';
 
 import s from './Details.module.css';
 
-import placeholderBackdrop from '../../images/placeholderBackdropDetails.jpg'; 
+import placeholderBackdrop from '../../images/placeholderBackdropDetails.jpg';
 import placeholderPoster from '../../images/placeholderPosterSearch.png';
 import Loader from 'components/Loader/Loader';
 
 const Details = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const lastPage = location.state?.from ?? '/';
-
+  const navigate = useNavigate();
   const [movies, setMovies] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,11 +47,14 @@ const Details = () => {
     <>
       <div className={s.container}>
         <div className={s.btnLast}>
-          <Link to={lastPage}>
-            <button type="button">
-              <i className="bx bx-chevron-left bx-sm bx-fade-left-hover"></i>
-            </button>
-          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              navigate(location.state?.from ?? '/');
+            }}
+          >
+            <i className="bx bx-chevron-left bx-sm bx-fade-left-hover"></i>
+          </button>
         </div>
         {isLoading ? (
           <div>
@@ -132,12 +134,12 @@ const Details = () => {
                     <i className="bx bx-right-arrow"></i>
                     <a href={homepage ? homepage : ''}>Watch</a>
                   </button>
-                  <Link to={'cast'}>
+                  <Link to={'cast'} state={{ from: location.state?.from }}>
                     <button type="button" className={s.btnLink}>
                       Top Billed Cast
                     </button>
                   </Link>
-                  <Link to={'reviews'}>
+                  <Link to={'reviews'} state={{ from: location.state?.from }}>
                     <button type="button" className={s.btnLink}>
                       Reviews
                     </button>
